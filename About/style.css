@@ -1,0 +1,24 @@
+
+  body, html {
+    margin: 0;
+    padding: 0;
+  }
+
+  #about {
+    background-image: url('/assets/pngtree-blue-and-purple-neon-star-3d-art-background-with-a-cool-image_3705286.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    min-height: 100vh; /* Menutupi seluruh tinggi layar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-content {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 800px;
+    text-align: center;
+  }

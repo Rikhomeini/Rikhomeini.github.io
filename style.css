@@ -1,0 +1,22 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  .jumbotron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Membuat jumbotron memenuhi satu layar penuh */
+    background-color: #ffffff; /* Ganti dengan warna atau gambar background yang diinginkan */
+    text-align: center;
+  }
+  
+  .profile-pic {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 20px; /* Jarak antara gambar dan teks */
+  }
+  
