@@ -5,7 +5,6 @@
   }
 
   #about {
-    background-image: url('/assets/pngtree-blue-and-purple-neon-star-3d-art-background-with-a-cool-image_3705286.jpg');
     background-size: cover;
     background-position: center;
     color: #fff;
@@ -14,11 +13,57 @@
     align-items: center;
     justify-content: center;
   }
+  
+  .navbar {
+    background-color: rgb(33, 132, 224) !important;
+  }
+  
+  
+  .navbar-brand {
+    color: white !important; 
+    font-size: 1.5rem !important;
+    font-weight: bold;
+    padding: 10px 15px !important;
+    border: 2px solid white !important; 
+    border-radius: 20px !important; 
+    text-transform: uppercase;
+    transition: background-color 0.3s ease; 
+  }
+  
+  .navbar-brand:hover {
+    color: black !important;
+    background-color: white !important;
+    border-color: black !important;
+  }
+  
+  
+  /* Mengubah tampilan link navbar */
+  .nav-link {
+    color: white !important;
+    font-size: 1rem;
+    text-transform: uppercase !important;
+    border: 2px solid white !important; /* Border warna putih */
+    border-radius: 20px !important; /* Rounded corners */
+    margin: 0px 8px;
+    text-transform: uppercase;
+  }
+  
+  .nav-link:hover {
+    color: black!important;
+    background-color:white !important;
+    border-color: black !important;
+  }
+
 
   .about-content {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: black;
     padding: 30px;
     border-radius: 10px;
     max-width: 800px;
     text-align: center;
+  }
+
+  .footer{
+    padding-bottom: 0%;
+    padding-top: 0%;
   }

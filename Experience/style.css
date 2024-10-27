@@ -1,5 +1,46 @@
+
+.navbar {
+    background-color: rgb(33, 132, 224) !important;
+  }
+  
+  
+  .navbar-brand {
+    color: white !important; 
+    font-size: 1.5rem !important;
+    font-weight: bold;
+    padding: 10px 15px !important;
+    border: 2px solid white !important; 
+    border-radius: 20px !important; 
+    text-transform: uppercase;
+    transition: background-color 0.3s ease; 
+  }
+  
+  .navbar-brand:hover {
+    color: black !important;
+    background-color: white !important;
+    border-color: black !important;
+  }
+  
+  
+  /* Mengubah tampilan link navbar */
+  .nav-link {
+    color: white !important;
+    font-size: 1rem;
+    text-transform: uppercase !important;
+    border: 2px solid white !important; /* Border warna putih */
+    border-radius: 20px !important; /* Rounded corners */
+    margin: 0px 8px;
+    text-transform: uppercase;
+  }
+  
+  .nav-link:hover {
+    color: black!important;
+    background-color:white !important;
+    border-color: black !important;
+  }
+  
 #experience {
-    background-color: cyan;
+    background-color: whitesmoke;
     background-size: cover;
     background-position: center;
     color: #fff;
