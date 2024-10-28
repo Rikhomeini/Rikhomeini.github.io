@@ -1,21 +1,5 @@
 
 .navbar {
-    background-color: rgb(33, 132, 224) !important;
-  }
-  
-  
-  .navbar-brand {
-    color: white !important; 
-    font-size: 1.5rem !important;
-    font-weight: bold;
-    padding: 10px 15px !important;
-    border: 2px solid white !important; 
-    border-radius: 20px !important; 
-    text-transform: uppercase;
-    transition: background-color 0.3s ease; 
-  }
-  
-  .navbar {
     background-color: #0088ff !important;
     padding: 15px 0;
 }
@@ -72,8 +56,52 @@
 }
 
 
-.navbar-nav .nav-link.active {
+.navbar-nav .nav-link {
+    position: relative;
+    color: white !important; /* Warna teks default */
+    margin: 5px 10px;
+    padding: 8px 20px !important;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.navbar-nav .nav-link:hover {
     background: rgba(255, 255, 255, 0.3);
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Indikator Aktif */
+.navbar-nav .nav-link.active {
+    background: rgba(255, 255, 255, 0.4); /* Warna saat aktif */
+    color: #0088ff !important; /* Ubah warna teks saat aktif */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+/* Garis bawah untuk link aktif */
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; /* Jarak dari bawah */
+    left: 50%;
+    width: 0;
+    height: 3px; /* Tinggi garis */
+    background-color: #0088ff; /* Warna garis */
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link.active::after {
+    width: 100%; /* Garis meluas saat aktif */
+}
+
+/* Garis bawah untuk hover */
+.navbar-nav .nav-link:hover::after {
+    width: 100%; /* Garis meluas saat hover */
 }
 
 .navbar-toggler {
@@ -130,9 +158,24 @@
     .nav-item:nth-child(2) { animation-delay: 0.2s; }
     .nav-item:nth-child(3) { animation-delay: 0.3s; }
 }
+
+
+  .jumbotron {
+    width: 100%;
+    height: 100%; 
+    background-color: white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0; 
+    padding: 60px 0; 
+    margin: 0; 
+}
   
 #experience {
-    background-color: whitesmoke;
+    color: black;
+    font-weight: bold;
+    background-image: url('/assets/Yellow\ Purple\ Gradient\ Color\ 3d\ Low\ Poly\ Technology\ Blur\ Background\ Wallpaper\ Image\ For\ Free\ Download\ -\ Pngtree.jpg');
     background-size: cover;
     background-position: center;
     color: #fff;

@@ -1,13 +1,4 @@
-body,html {
-    margin: 0;
-    padding: 0;
-}
 .navbar {
-    background-color: rgb(33, 132, 224) !important;
-  }
-  
-  
-  .navbar {
     background-color: #0088ff !important;
     padding: 15px 0;
 }
@@ -168,47 +159,11 @@ body,html {
     .nav-item:nth-child(3) { animation-delay: 0.3s; }
 }
 
-.container-fluid {
-    min-height: 100vh;
-    background-image: url('/assets/50\ Minimalist\ Desktop\ Wallpapers\ and\ Backgrounds\ \(2024\ Edition\).jpg'); /* Ganti dengan path gambar yang sesuai */
-    background-size: cover;
-    background-position: center;
-    padding: 20px; 
-    color: black; 
+.text-purple {
+    color: #6f42c1; /* Warna ungu untuk ikon Bootstrap */
 }
 
-  
-.timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px 0;
-}
-
-.timeline-item {
-    background-color:white;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-
-.timeline-item h5 {
-    color: #007bff;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.timeline-item h4 {
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-transform: capitalize;
-}
-
-.timeline-item p {
-    margin: 5px 0 0;
-    font-size: 1rem;
-    color: black;
+.skills-section p {
+    font-size: 1.1rem;
+    font-weight: 500;
 }
