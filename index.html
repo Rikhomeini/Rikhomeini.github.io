@@ -120,9 +120,17 @@
             
             console.log('Form submitted:', { name, email, message }); 
             
-            alert(`Thank you, ${name}! Your message has been sent.`);
-            form.reset();
-            
+            emailjs.send("service_bzhv4x8", "template_g1wsvvq", {
+                user_name: name,
+                user_email: email,
+                message: message
+            }).then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                alert(`Thank you, ${name}! Your message has been sent.`);
+            }, function(error) {
+                console.error('FAILED...', error);
+                alert("Failed to send message. Please try again!");
+            });
             const modalElement = document.getElementById('contactModal');
             const modal = bootstrap.Modal.getInstance(modalElement);
             if (modal) {
@@ -134,5 +142,14 @@
         }
       });
     </script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function(){
+        emailjs.init("lmYmSeh-TeU-me2Vc");
+    })();
+</script>
+
+
 </body>
 </html>
