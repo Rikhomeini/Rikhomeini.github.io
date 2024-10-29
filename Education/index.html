@@ -12,6 +12,7 @@
     <title>My CV</title>
 </head>
 <body>
+  <div class="stars"></div>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-sm-top">
       <div class="container">
@@ -41,7 +42,7 @@
 
     <!-- content education -->
     <div class="container-fluid md-4 ">
-      <h1 class="text-center mb-4">Education</h1>
+      <h1 class="text-center mb-4 pt-3 text-dark">Education</h1>
       <p class="text-center mb-5">Here’s a summary of my educational background.</p>
 
       <!-- Education Timeline -->
@@ -71,7 +72,38 @@
         <p> Created wtih <i class="bi bi-fire text-danger"></i> by <a href="https://www.instagram.com/rikhomeini_/" class="text-white fw-bold">Rikhomeini</a></p>
       </footer>
     <!-- footer end -->
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const starsContainer = document.querySelector('.stars');
+        const starCount = 200; // Jumlah bintang
+    
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            // Posisi acak
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            
+            // Ukuran acak
+            const size = Math.random() * 2;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            // Durasi animasi acak
+            const duration = 3 + Math.random() * 7;
+            star.style.setProperty('--duration', `${duration}s`);
+    
+            starsContainer.appendChild(star);
+        }
+    });
+    </script>
+
+  
 </body>
+
+
 <script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

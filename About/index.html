@@ -11,6 +11,7 @@
     <title>My CV</title>
 </head>
 <body>
+  <div class="stars"></div>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-sm-top">
       <div class="container">
@@ -44,8 +45,8 @@
     <div id="about" class="container-fluid" color: aliceblue;">
        <div class="row justify-content-center"></div>
       <div class="about-content">
-        <h1 class="mb-sm-4" style="font-weight: bold ;">About Me</h1>
-        <img src="/assets/1711567191301.jpg"  alt="My Profile" class="rounded-circle mb-4" style="width: 300px; height: 300px; object-fit: cover;">
+        <h1 class="mb-sm-4 text-primary" style="font-weight: bold ;">About Me</h1>
+        <img src="/assets/1711567191301.jpg"  alt="My Profile" class="rounded-circle mb-4" style="width: 200px; height: 200px; object-fit: cover;">
         <p>
           Hello! My name is <strong>Muhammad Maulana Rikhomeini</strong>, and I am a tech enthusiast with a deep passion for programming, IoT, and creative problem solving. Over the years, I have worked on numerous projects that combine my love for technology with practical applications, such as smart devices and web development.
         </p>
@@ -68,8 +69,35 @@
 </footer>
 <!-- footer end -->
 
-</body>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const starsContainer = document.querySelector('.stars');
+    const starCount = 200; // Jumlah bintang
+
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        
+        // Posisi acak
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        
+        // Ukuran acak
+        const size = Math.random() * 2;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        
+        // Durasi animasi acak
+        const duration = 3 + Math.random() * 7;
+        star.style.setProperty('--duration', `${duration}s`);
+
+        starsContainer.appendChild(star);
+    }
+  });
+</script>
+ 
 <script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
 </html>

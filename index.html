@@ -7,21 +7,26 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- bootstrap ICON -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
     <!-- My CSS -->
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
 </script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "lmYmSeh-TeU-me2Vc",
-      });
-   })();
-</script>
+<!-- Di bagian head -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
     <title>My CV</title>
 </head>
 <body>
+  <div class="stars"></div>
+</body>
+<nav>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-sm-top">
         <div class="container">
@@ -47,116 +52,99 @@
           </div>
         </div>
     </nav>
+  </nav>
     <!-- Navbar END -->
     
     <!-- Jumbotron -->
     <div class="jumbotron">
       <div class="container text-center text-primary">
         <img src="assets/pomprov.jpg" alt="My Profile" class="profile-pic rounded-circle mb-4">
-        <h1 class="display-4"><strong>Rikhomeini</strong></h1>
-        <p class="lead"><b>Student for Universitas Jember</b></p>
-        <p class="content"><strong>This site showcases my skills, experiences, and projects</strong></p>
+        <h1 class="display-4"><strong>Muhammad Maulana Rikhomeini</strong></h1>
+        <p class="lead"><b><span id="typed-text"></span></b></p>
+        <p class="content"><strong id="typed1-text"></strong></p>
       </div>
     </div>
     <!-- Jumbotron END -->
-
+    
     <!-- Contact Button -->
    
-<section class="contact-section">
-  <div class="container-fluid">
-      <div class="contact-wrapper">
-          <p class="text-center mb-3">Let's Connect!</p>
-          <div class="text-center">
-              <button class="btn btn-primary btn-lg custom-contact-btn" data-bs-toggle="modal" data-bs-target="#contactModal">Contact Me</button>
-          </div>
-      </div>
-  </div>
-</section>
-    <!-- Contact Form Modal -->
-    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="contactModalLabel">Contact Me</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="contactForm">
-              <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="message" class="form-label">Message</label>
-                <textarea class="form-control" id="message" rows="4" required></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Send Message</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- footer -->
-    <footer class="bg-primary text-dark text-center mb-3">
-        <p>Created with <i class="bi bi-fire text-danger"></i> by <a href="https://www.instagram.com/rikhomeini_/" class="text-white fw-bold">Rikhomeini</a></p>
-    </footer>
+    <footer class="footer">
+      <div class="footer-content ">
+          <h3>This Website was made with <i class="bi bi-fire text-primary"></i></h3>
+          <ul class="socials mt-sm-4">
+              <li><a href="https://www.tiktok.com/@rikhomeiini?lang=en" class="bi bi-tiktok ">TikTok</a></li>
+              <li><a href="https://www.instagram.com/rikhomeini_/" class="bi bi-instagram">Instagram</a></li>
+              <li><a href="#" class="bi bi-linkedin">LinkedIn</a></li>
+          </ul>
+          <button id="contact-btn" class="contact-btn">Contact Me</button>  
+      </div>
+  </footer>
+
+  <div id="contact-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Contact Me</h2>
+        <form id="contact-form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</div>
+
     <!-- footer end -->
 
+    <script>
+      var typed = new Typed('#typed-text', {
+        strings: ['Student for University of Jember', 'Newcomer Developer', 'Lifelong Learner'],
+        typeSpeed: 60,
+        backSpeed: 60,
+        loop: true
+      });
+      var typed = new Typed('#typed1-text', {
+        strings: ['This site showcases my skills, experiences, and educations'],
+        typeSpeed: 60,
+        backSpeed: 60,
+        loop: true
+      });
+    </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const starsContainer = document.querySelector('.stars');
+    const starCount = 200; // Jumlah bintang
+
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        
+        // Posisi acak
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        
+        // Ukuran acak
+        const size = Math.random() * 2;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        
+        // Durasi animasi acak
+        const duration = 3 + Math.random() * 7;
+        star.style.setProperty('--duration', `${duration}s`);
+
+        starsContainer.appendChild(star);
+    }
+});
+</script>
+      
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
-    
-    <!-- Form handling script -->
-     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded'); 
-    
-    const form = document.getElementById('contactForm');
-    if (form) {
-        console.log('Form found'); 
-        
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            console.log('Form submitted:', { name, email, message }); 
-            
-            
-            emailjs.send("service_bzhv4x8", "template_g1wsvvq", {
-                from_name: name,        
-                user_email: email,      
-                message: message        
-            }).then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
-                alert(`Thank you, ${name}! Your message has been sent.`);
-            }, function(error) {
-                console.error('FAILED...', error);
-                alert("Failed to send message. Please try again!");
-            });
-            
-            // Tutup modal jika digunakan
-            const modalElement = document.getElementById('contactModal');
-            const modal = bootstrap.Modal.getInstance(modalElement);
-            if (modal) {
-                modal.hide();
-            }
-
-            form.reset();
-        });
-    } else {
-        console.error('Contact form not found!'); 
-    }
-});
-     </script>
-
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="parcticles.js"></script>
+    <script src="modal.js"></script>
+    <!-- <script src="bgnavbar.js"></script> -->
 </body>
 </html>

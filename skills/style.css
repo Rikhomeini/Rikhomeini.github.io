@@ -1,7 +1,51 @@
 .navbar {
-    background-color: #0088ff !important;
+    background-color: black !important;
     padding: 15px 0;
+
+    background-size: 200% 200%;
+    animation: gradientAnimation 15s ease infinite;
 }
+
+
+.navbar {
+    background: linear-gradient(
+        45deg,
+        rgba(15, 12, 41, 0.7),
+        rgba(48, 43, 99, 0.7),
+        rgba(36, 36, 62, 0.7)
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar::before {
+    content: '';
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.navbar:hover::before {
+    opacity: 1;
+}
+
 
 .navbar-brand {
     color: white !important;
@@ -29,12 +73,31 @@
     overflow: hidden;
 }
 
+.navbar-nav .nav-link.active {
+    background-color: rgba(0, 136, 255, 0.2);
+    color: yellow !important;
+    font-weight: bold;
+    border-bottom: 3px solid #0088ff;
+    padding-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+}
 
 .navbar-nav .nav-link:hover {
     background: rgba(255, 255, 255, 0.3);
     transform: translateX(10px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
+
 
 .navbar-nav .nav-link::after {
     content: '';
@@ -57,50 +120,76 @@
 
 .navbar-nav .nav-link {
     position: relative;
-    color: white !important; /* Warna teks default */
+    color: white !important;
     margin: 5px 10px;
     padding: 8px 20px !important;
     border-radius: 25px;
-    background: rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-    overflow: hidden;
+    overflow: hidden; /* Menyembunyikan elemen yang melampaui batas */
 }
 
-.navbar-nav .nav-link:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateX(5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+.navbar-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 300%; /* Lebar gelombang */
+    height: 300%; /* Tinggi gelombang */
+    background-color: rgba(255, 255, 255, 0.2); /* Warna gelombang */
+    border-radius: 50%; /* Bentuk bulat */
+    transform: translate(-50%, 50%) scale(0); /* Mulai dari ukuran 0 */
+    transition: transform 0.4s ease; /* Transisi untuk efek gelombang */
+    z-index: 0; /* Mengatur agar berada di belakang teks */
 }
 
-/* Indikator Aktif */
-.navbar-nav .nav-link.active {
-    background: rgba(255, 255, 255, 0.4); /* Warna saat aktif */
-    color: #0088ff !important; /* Ubah warna teks saat aktif */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05);
-    transition: all 0.3s ease;
+.navbar-nav .nav-link:hover::before,
+.navbar-nav .nav-link.active::before {
+    transform: translate(-50%, 50%) scale(1); /* Membesar saat hover atau aktif */
 }
 
-/* Garis bawah untuk link aktif */
+.navbar-nav .nav-link span {
+    position: relative;
+    z-index: 1; /* Menempatkan teks di atas gelombang */
+}
+
 .navbar-nav .nav-link::after {
     content: '';
     position: absolute;
-    bottom: -4px; /* Jarak dari bawah */
+    bottom: -5px; /* Jarak dari bawah */
     left: 50%;
     width: 0;
-    height: 3px; /* Tinggi garis */
+    height: 4px; /* Tinggi garis */
     background-color: #0088ff; /* Warna garis */
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     transform: translateX(-50%);
 }
 
 .navbar-nav .nav-link.active::after {
-    width: 100%; /* Garis meluas saat aktif */
+    width: 100%; /* Garis meluas saat aktif atau hover */
 }
 
-/* Garis bawah untuk hover */
-.navbar-nav .nav-link:hover::after {
-    width: 100%; /* Garis meluas saat hover */
+
+.navbar-nav .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Menggeser garis ke bawah sedikit */
+    left: 0;
+    width: 100%;
+    height: 3px; /* Ketebalan garis */
+    background-color: white; /* Warna garis */
+}
+
+.navbar-nav .nav-link.active {
+    background-color: white;
+    color: #0088ff !important;
+    font-weight: bold;
+    border-bottom: 3px solid #0088ff;
+    padding-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #0056b3;
+    border-bottom: 2px solid #0056b3;
 }
 
 
@@ -111,7 +200,7 @@
 }
 
 .navbar-toggler:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: aqua;
     transform: scale(1.1);
 }
 
@@ -159,19 +248,138 @@
     .nav-item:nth-child(3) { animation-delay: 0.3s; }
 }
 
-.text-purple {
-    color: #6f42c1; /* Warna ungu untuk ikon Bootstrap */
+h2.text-warning {
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+    margin-bottom: 40px;
 }
 
-.skills-section p {
-    font-size: 1.1rem;
-    font-weight: 500;
+h3.text-primary, h3.text-danger {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
+.bi {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+    transition: all 0.3s ease;
+}
+
+.bi:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.text-info {
+    color: #5bc0de !important;
+    text-shadow: 0 0 5px rgba(91, 192, 222, 0.5);
+}
+
+.text-light {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.col-6, .col-md-4, .col-lg-3 {
+    transition: transform 0.3s ease;
+}
+
+.col-6:hover, .col-md-4:hover, .col-lg-3:hover {
+    transform: translateY(-5px);
+}
+
+footer {
+    background: linear-gradient(
+        45deg,
+        rgba(15, 12, 41, 0.9),
+        rgba(48, 43, 99, 0.9),
+        rgba(36, 36, 62, 0.9)
+    ) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+footer p {
+    color: white !important;
+    margin-bottom: 0;
+}
+
+footer a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffc107 !important;
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle var(--duration) infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    .row {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+    .container {
+        padding: 20px;
+        margin-top: 30px;
     }
+}
+/* Efek scroll yang halus */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Scrollbar custom */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(15, 12, 41, 0.7);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
 }

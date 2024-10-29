@@ -4,13 +4,58 @@ body, html {
     height: 100%;
 
   }
+  
 
 
 
   .navbar {
-    background-color: #0088ff !important;
+    background-color: black !important;
     padding: 15px 0;
+
+    background-size: 200% 200%;
+    animation: gradientAnimation 15s ease infinite;
 }
+
+
+.navbar {
+    background: linear-gradient(
+        45deg,
+        rgba(15, 12, 41, 0.7),
+        rgba(48, 43, 99, 0.7),
+        rgba(36, 36, 62, 0.7)
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar::before {
+    content: '';
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.navbar:hover::before {
+    opacity: 1;
+}
+
 
 .navbar-brand {
     color: white !important;
@@ -40,7 +85,7 @@ body, html {
 
 .navbar-nav .nav-link.active {
     background-color: rgba(0, 136, 255, 0.2);
-    color: #0088ff !important;
+    color: yellow !important;
     font-weight: bold;
     border-bottom: 3px solid #0088ff;
     padding-bottom: 8px;
@@ -144,7 +189,7 @@ body, html {
 }
 
 .navbar-nav .nav-link.active {
-    background-color: rgba(0, 136, 255, 0.2);
+    background-color: white;
     color: #0088ff !important;
     font-weight: bold;
     border-bottom: 3px solid #0088ff;
@@ -217,7 +262,7 @@ body, html {
   .jumbotron {
     width: 100%;
     height: 100%; 
-    background-image: url('assets/Premium\ Vector\ _\ Geometric\ gradient\ technology\ background.jpg');
+;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -229,7 +274,7 @@ body, html {
 
 
 .jumbotron .display-4 {
-  font-weight: bold;
+  font-weight: 500;
   color: black;
 }
 
@@ -252,37 +297,233 @@ body, html {
     object-fit: cover;
     margin-bottom: 20px; 
   }
-  
-  .contact-section {
-    min-height: 0;
-    background: #0d6efd;
-    padding: 0;
+
+
+  body {
     margin: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    overflow-x: hidden;
 }
 
-.contact-wrapper {
-    background: #0d6efd;
-    padding-top: 0px;
-    padding-bottom: 20px;
-    border-radius: 0px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-.custom-contact-btn {
-    background: linear-gradient(to right, #0d6efd, #0043a8);
-    padding: 12px 30px;
-    border: none;
-    border-radius: 25px;
-    font-size: 1.1rem;
-    font-weight: bold;
+footer {
+    background: linear-gradient(
+        45deg,
+        rgba(15, 12, 41, 0.9),
+        rgba(48, 43, 99, 0.9),
+        rgba(36, 36, 62, 0.9)
+    ) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+footer h3 {
+    color: black;
+    text-shadow: 0 0 5px rgb(241, 48, 48);
+    margin-top: 5px;
+}
+
+
+
+footer a {
+    text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
 }
 
-.custom-contact-btn:hover {
-    background: linear-gradient(to right, #0b5ed7, #003785);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+footer a:hover {
+    color: rgb(255, 0, 0) !important;
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+
+
+.socials {
+    list-style: none;
+    padding: 0;
+}
+
+.socials li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.social-icon {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    position: relative;
+}
+
+.social-icon::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: black;
+    transition: width 0.3s;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+}
+
+.social-icon:hover::after {
+    width: 100%;
+}
+
+.social-icon:hover {
+    color: black;
+}
+
+.contact-btn {
+    background-color: #ff0000;
+    color: black;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+    border-radius: 10%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.contact-btn:hover {
+    background-color: aqua;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+}
+
+#contact-form button {
+    background-color: #61dafb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#contact-form button:hover {
+    background-color: #4fa8c9;
+}
+
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin-top: 30px;
+    }
+}
+
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle var(--duration) infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* Efek scroll yang halus */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Scrollbar custom */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(15, 12, 41, 0.7);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
 }
