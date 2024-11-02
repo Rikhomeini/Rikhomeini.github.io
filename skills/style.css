@@ -1,3 +1,13 @@
+canvas {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: -1 !important;
+    background: black;
+}
+
 .navbar {
     background-color: black !important;
     padding: 15px 0;
@@ -248,6 +258,11 @@
     .nav-item:nth-child(3) { animation-delay: 0.3s; }
 }
 
+.container {
+    font-family: "Kanit", sans-serif;
+    font-weight: 600;
+}
+
 h2.text-warning {
     font-size: 2.5rem;
     text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
@@ -268,6 +283,13 @@ h3.text-primary, h3.text-danger {
 .bi:hover {
     transform: scale(1.1);
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.text{
+    font-size: 1rem;
+    color: black;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    
 }
 
 .text-info {

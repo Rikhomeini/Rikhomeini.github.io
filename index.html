@@ -7,6 +7,11 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- bootstrap ICON -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Kanit:ital&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
     <!-- My CSS -->
     <link rel="stylesheet" href="style.css">
@@ -21,11 +26,58 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
-    <title>My CV</title>
+    <title>Rikhomeini CV</title>
 </head>
 <body>
-  <div class="stars"></div>
-</body>
+  <script>
+    let scene, camera, renderer, stars = [];
+
+    function init() {
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x19C9FE);
+        camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+        camera.position.z = 1;
+        camera.rotation.x = Math.PI/2;
+
+        renderer = new THREE.WebGLRenderer();
+        renderer.setClearColor(0x000080);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        for (let i = 0; i < 4500; i++) {
+            let geometry = new THREE.SphereGeometry(0.2, 30, 30);
+            let material = new THREE.MeshBasicMaterial({color: 0x00000});
+            let star = new THREE.Mesh(geometry, material);
+
+            star.position.set(Math.random() * 600 - 300, Math.random() * 600 - 300, Math.random() * 600 - 300);
+            scene.add(star);
+            stars.push(star);
+        }
+
+        animate();
+    }
+
+    function animate() {
+        stars.forEach(star => {
+            star.position.z += 0.2;
+            if (star.position.z > 300) star.position.z -= 600;
+        });
+
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+    }
+
+    init();
+
+    // Resize handler
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+</script>
+
+
 <nav>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-sm-top">
@@ -58,7 +110,7 @@
     <!-- Jumbotron -->
     <div class="jumbotron">
       <div class="container text-center text-primary">
-        <img src="assets/pomprov.jpg" alt="My Profile" class="profile-pic rounded-circle mb-4">
+        <img src="assets/Rikho.jpg" class="img-thumbnail  rounded-circle" alt="Circular Thumbnail" style="width: 380px; height: 380px; object-fit: cover;">
         <h1 class="display-4"><strong>Muhammad Maulana Rikhomeini</strong></h1>
         <p class="lead"><b><span id="typed-text"></span></b></p>
         <p class="content"><strong id="typed1-text"></strong></p>
@@ -66,8 +118,6 @@
     </div>
     <!-- Jumbotron END -->
     
-    <!-- Contact Button -->
-   
     <!-- footer -->
     <footer class="footer">
       <div class="footer-content ">
@@ -99,44 +149,22 @@
     <script>
       var typed = new Typed('#typed-text', {
         strings: ['Student for University of Jember', 'Newcomer Developer', 'Lifelong Learner'],
-        typeSpeed: 60,
-        backSpeed: 60,
+        typeSpeed: 40,
+        backSpeed: 40,
         loop: true
       });
       var typed = new Typed('#typed1-text', {
         strings: ['This site showcases my skills, experiences, and educations'],
-        typeSpeed: 60,
-        backSpeed: 60,
-        loop: true
+        typeSpeed: 40,
+        backSpeed: 65,
+        loop: true  
       });
     </script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const starsContainer = document.querySelector('.stars');
-    const starCount = 200; // Jumlah bintang
 
-    for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        
-        // Posisi acak
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.top = `${Math.random() * 100}%`;
-        
-        // Ukuran acak
-        const size = Math.random() * 2;
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-        
-        // Durasi animasi acak
-        const duration = 3 + Math.random() * 7;
-        star.style.setProperty('--duration', `${duration}s`);
 
-        starsContainer.appendChild(star);
-    }
-});
-</script>
+
+
       
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
@@ -146,5 +174,6 @@
     <script src="parcticles.js"></script>
     <script src="modal.js"></script>
     <!-- <script src="bgnavbar.js"></script> -->
+    
 </body>
 </html>

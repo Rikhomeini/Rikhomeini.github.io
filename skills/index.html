@@ -12,13 +12,61 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Kanit:ital&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <!-- My CSS -->
     <link rel="stylesheet" href="style.css">
-    <title>My CV</title>
+    <title>Skills | Rikhomeini</title>
 </head>
 <body>
-  <div class="stars"></div>
+  <script>
+    let scene, camera, renderer, stars = [];
+
+    function init() {
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x19C9FE);
+        camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+        camera.position.z = 1;
+        camera.rotation.x = Math.PI/2;
+
+        renderer = new THREE.WebGLRenderer();
+        renderer.setClearColor(0x000080);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        for (let i = 0; i < 4500; i++) {
+            let geometry = new THREE.SphereGeometry(0.2, 30, 30);
+            let material = new THREE.MeshBasicMaterial({color: 0x00000});
+            let star = new THREE.Mesh(geometry, material);
+
+            star.position.set(Math.random() * 600 - 300, Math.random() * 600 - 300, Math.random() * 600 - 300);
+            scene.add(star);
+            stars.push(star);
+        }
+
+        animate();
+    }
+
+    function animate() {
+        stars.forEach(star => {
+            star.position.z += 0.2;
+            if (star.position.z > 300) star.position.z -= 600;
+        });
+
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+    }
+
+    init();
+
+    // Resize handler
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+</script>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-sm-top">
       <div class="container">
@@ -56,29 +104,29 @@
           </div>
           <div class="col-6 col-md-4 col-lg-3 text-center mb-3">
               <i class="bi bi-filetype-html fs-1 text-danger"></i>
-              <p class="mt-2 text-info">HTML</p>
+              <p class="mt-2 text">HTML</p>
           </div>
           <div class="col-6 col-md-4 col-lg-3 text-center mb-3">
               <i class="bi bi-filetype-css fs-1 text-primary"></i>
-              <p class="mt-2 text-info">CSS</p>
+              <p class="mt-2 text">CSS</p>
           </div>
           <div class="col-6 col-md-4 col-lg-3 text-center mb-3">
               <i class="bi bi-bootstrap fs-1 text-purple"></i>
-              <p class="mt-2 text-info">Bootstrap</p>
+              <p class="mt-2 text">Bootstrap</p>
           </div>
           <div class="col-6 col-md-4 col-lg-3 text-center mb-3">
               <i class="bi bi-filetype-py fs-1 text-success"></i>
-              <p class="mt-2 text-info">Python</p>
+              <p class="mt-2 text">Python</p>
           </div>
   
           <!-- Offset to center JS and C icons -->
           <div class="col-6 col-md-4 col-lg-3 offset-md-2 offset-lg-3 text-center mb-3">
               <i class="bi bi-filetype-js fs-1 text-warning"></i>
-              <p class="mt-2 text-info">JavaScript</p>
+              <p class="mt-2 text">JavaScript</p>
           </div>
           <div class="col-6 col-md-4 col-lg-3 text-center mb-3">
               <i class="bi bi-code-slash fs-1 text-secondary"></i>
-              <p class="mt-2 text-info">C</p>
+              <p class="mt-2 text">C</p>
           </div>
       </div>
   
